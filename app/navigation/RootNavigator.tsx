@@ -1,4 +1,3 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
 import { checkAuthStatus } from "../services/authService";
@@ -38,26 +37,24 @@ export const RootNavigator: React.FC = () => {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {isSignedIn ? (
-          <Stack.Screen
-            name="Main"
-            component={MainDrawer}
-            options={{
-              animationEnabled: false,
-            }}
-          />
-        ) : (
-          <Stack.Screen
-            name="Auth"
-            component={AuthStack}
-            options={{
-              animationEnabled: false,
-            }}
-          />
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {isSignedIn ? (
+        <Stack.Screen
+          name="Main"
+          component={MainDrawer}
+          options={{
+            animationEnabled: false,
+          }}
+        />
+      ) : (
+        <Stack.Screen
+          name="Auth"
+          component={AuthStack}
+          options={{
+            animationEnabled: false,
+          }}
+        />
+      )}
+    </Stack.Navigator>
   );
 };
